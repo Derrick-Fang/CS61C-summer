@@ -37,8 +37,9 @@ main:
 map:
     # Prologue: Make space on the stack and back-up registers
     ### YOUR CODE HERE ###
-    addi sp, sp, -4
-    sw ra, 0(sp)
+    addi sp, sp, -8
+    sw s0, 0(sp)
+    sw ra, 4(sp)
 
     beq a0, x0, done    # If we were given a null pointer (address 0), we're done.
 
@@ -71,13 +72,14 @@ map:
     add a1, s1, x0
     # recurse
     ### YOUR CODE HERE ###
-    jal map
+    jal ra, map
 
 done:
     # Epilogue: Restore register values and free space from the stack
     ### YOUR CODE HERE ###
-    lw ra, 0(sp)
-    addi sp, sp, 4
+    lw s0, 0(sp)
+    lw ra, 4(sp)
+    addi sp, sp, 8
     jr ra # Return to caller
 
 square:
