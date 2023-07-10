@@ -31,9 +31,6 @@ main:
     addi a0, x0, 10
     ecall #Terminate the program
 
-
-
-
 # a0, a1 are args 
 
 
@@ -42,7 +39,6 @@ map:
     ### YOUR CODE HERE ###
     addi sp, sp, -4
     sw ra, 0(sp)
-
 
     beq a0, x0, done    # If we were given a null pointer (address 0), we're done.
 
@@ -75,14 +71,13 @@ map:
     add a1, s1, x0
     # recurse
     ### YOUR CODE HERE ###
-    lw ra, 0(sp)
-    addi sp, sp, 4
-    j map
+    jal map
 
 done:
     # Epilogue: Restore register values and free space from the stack
     ### YOUR CODE HERE ###
-
+    lw ra, 0(sp)
+    addi sp, sp, 4
     jr ra # Return to caller
 
 square:
