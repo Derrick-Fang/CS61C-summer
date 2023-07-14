@@ -77,42 +77,11 @@ main:
 # Think: why might having a1 be useful?
 f:
     # YOUR CODE GOES HERE!
-    mv t0, a0
-    li t1, -3
-    beq t0, t1, neg_3
-    li t1, -2
-    beq t0, t1, neg_2
-    li t1, -1
-    beq t0, t1, neg_1
-    li t1, 0
-    beq t0, t1, zero_0
-    li t1, 1
-    beq t0, t1, pos_1
-    li t1, 2
-    beq t0, t1, pos_2
-    li t1, 3
-    beq t0, t1, pos_3
-neg_3:
-    lw a0, 0(a1)
-    j end 
-neg_2:
-    lw a0, 4(a1)
-    j end 
-neg_1:
-    lw a0, 8(a1)
-    j end 
-zero_0:
-    lw a0, 12(a1)
-    j end 
-pos_1:
-    lw a0, 16(a1)
-    j end 
-pos_2:
-    lw a0, 20(a1)
-    j end
-pos_3:
-    lw a0, 24(a1)
-    j end 
+   	addi a0, a0, 3
+    slli a0, a0, 2 # ?
+    add a0, a0, a1
+    lw a0, 0(a0)
+    
 end: 
     jr ra               # Always remember to jr ra after your function!
 
